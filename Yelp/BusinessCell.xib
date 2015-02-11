@@ -28,7 +28,7 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.07 mi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mBz-TT-aQP">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="1.07 mi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mBz-TT-aQP">
                         <rect key="frame" x="277" y="10" width="35" height="12"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -91,6 +91,14 @@
                     <constraint firstItem="FRE-dR-W59" firstAttribute="top" secondItem="mBz-TT-aQP" secondAttribute="bottom" constant="4" id="pIQ-sw-b8g"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="addressLabel" destination="xHv-ul-9uE" id="bMp-l7-Wxs"/>
+                <outlet property="categoryLabel" destination="nbT-wD-NEJ" id="JpI-0E-eiV"/>
+                <outlet property="distanceLabel" destination="mBz-TT-aQP" id="Spl-FP-XRS"/>
+                <outlet property="nameLabel" destination="MH9-DC-urb" id="asz-Zy-CmN"/>
+                <outlet property="ratingImageView" destination="8MS-QF-Q6Z" id="sx5-dP-Mdp"/>
+                <outlet property="thumbImageView" destination="f5D-3M-V1B" id="eJv-bd-SVj"/>
+            </connections>
             <point key="canvasLocation" x="353" y="307.5"/>
         </tableViewCell>
     </objects>

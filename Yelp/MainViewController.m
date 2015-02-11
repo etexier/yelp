@@ -9,6 +9,7 @@
 #import "MainViewController.h"
 #import "YelpClient.h"
 #import "Business.h"
+#import "Businesscell.h"
 
 NSString * const kYelpConsumerKey = @"vxKwwcR_NMQ7WaEiQBK_CA";
 NSString * const kYelpConsumerSecret = @"33QCvh5bIF5jIHR5klQr7RtBDhQ";
@@ -18,7 +19,7 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
 @interface MainViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) YelpClient *client;
-@property (nonatomic, strong) NSArray *businesses;
+@property (atomic, strong) NSArray *businesses;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
 
@@ -35,6 +36,7 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
             NSLog(@"response: %@", response);
             NSArray *businessDictionaries = response[@"businesses"];
             self.businesses = [Business bussinessesWithDictionaries:businessDictionaries];
+            [self.tableView reloadData];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"error: %@", [error description]);
         }];
@@ -48,7 +50,11 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    // Do any additional setup after loading the view from its nib.
+    [self.tableView registerNib:[UINib nibWithNibName:@"BusinessCell" bundle:nil] forCellReuseIdentifier:@"BusinessCell"];
+    
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.title = @"Yelp";
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,12 +66,13 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
 #pragma mark - Table View methods
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    self.businesses.count;
-    
+    return self.businesses.count;
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    BusinessCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BusinessCell"];
+    cell.business = self.businesses[indexPath.row];
+    return cell;
 }
 
 

@@ -13,8 +13,8 @@
 @property (nonatomic, strong) NSString *imageUrl;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *ratingImageUrl;
-@property (nonatomic, assign) NSInteger *numReviews;
-@property (nonatomic, assign) NSString *address;
+@property (nonatomic, assign) NSInteger numReviews;
+@property (nonatomic, strong) NSString *address;
 @property (nonatomic, strong) NSString *categories;
 @property (nonatomic, assign) CGFloat distance;
 
