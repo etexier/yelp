@@ -16,7 +16,9 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     MainViewController *vc = [[MainViewController alloc] init];
-    UINavigationController  *nvc = [[UINavigationController alloc]initWithRootViewController:vc];
+    UINavigationController  *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
+    nvc.navigationBar.translucent = NO; 
+
     
     self.window.rootViewController = nvc;
     
