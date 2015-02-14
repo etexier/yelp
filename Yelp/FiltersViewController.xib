@@ -5,9 +5,8 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FiltersViewController">
             <connections>
-                <outlet property="tableView" destination="rgG-Am-Scy" id="v24-0k-6zw"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -16,18 +15,19 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="rgG-Am-Scy">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="uaC-mX-DIJ">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                 </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="rgG-Am-Scy" secondAttribute="bottom" id="FGh-NR-UoO"/>
-                <constraint firstItem="rgG-Am-Scy" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="L42-26-h97"/>
-                <constraint firstItem="rgG-Am-Scy" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="UB1-xd-kAc"/>
-                <constraint firstAttribute="trailing" secondItem="rgG-Am-Scy" secondAttribute="trailing" id="n54-Ee-sHI"/>
+                <constraint firstItem="uaC-mX-DIJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="5ss-gW-IAC"/>
+                <constraint firstItem="uaC-mX-DIJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Vhq-d6-Bd4"/>
+                <constraint firstAttribute="bottom" secondItem="uaC-mX-DIJ" secondAttribute="bottom" id="psO-54-UXP"/>
+                <constraint firstAttribute="trailing" secondItem="uaC-mX-DIJ" secondAttribute="trailing" id="sXG-U8-fkh"/>
             </constraints>
+            <point key="canvasLocation" x="360" y="317"/>
         </view>
     </objects>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
