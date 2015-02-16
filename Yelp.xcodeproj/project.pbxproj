@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		318AEB361A8FC78200D03D9B /* UIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 318AEB351A8FC78200D03D9B /* UIHelper.m */; };
+		318AEB3A1A91672B00D03D9B /* SwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 318AEB381A91672B00D03D9B /* SwitchCell.m */; };
+		318AEB3B1A91672B00D03D9B /* SwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 318AEB391A91672B00D03D9B /* SwitchCell.xib */; };
 		31AC10761A8F3901005A3AF8 /* FiltersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31AC10741A8F3901005A3AF8 /* FiltersViewController.m */; };
 		31AC10771A8F3901005A3AF8 /* FiltersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31AC10751A8F3901005A3AF8 /* FiltersViewController.xib */; };
 		31AC107B1A8F4218005A3AF8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31AC107A1A8F4218005A3AF8 /* Images.xcassets */; };
@@ -28,6 +31,8 @@
 		42FD6C6E18DC286B000BF2B9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 42FD6C6C18DC286B000BF2B9 /* InfoPlist.strings */; };
 		42FD6C7018DC286B000BF2B9 /* YelpTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FD6C6F18DC286B000BF2B9 /* YelpTests.m */; };
 		63E591F41F684901AF8C1C19 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DEC6D18C14F46F8AF2EA320 /* libPods.a */; };
+		AA8EF07FA9DF69CA2ED9C541 /* YelpException.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8EF376AC1A611A87A4731A /* YelpException.m */; };
+		AA8EF3B5B26BE80F2A0B886F /* Filters.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8EF72EBCCB0572C9A605E6 /* Filters.m */; };
 		EE68910D2D716CBDBF6FE228 /* libPods-YelpTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 870310ED5FF2798A49950811 /* libPods-YelpTests.a */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +47,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		318AEB341A8FC78200D03D9B /* UIHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIHelper.h; sourceTree = "<group>"; };
+		318AEB351A8FC78200D03D9B /* UIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIHelper.m; sourceTree = "<group>"; };
+		318AEB371A91672B00D03D9B /* SwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwitchCell.h; sourceTree = "<group>"; };
+		318AEB381A91672B00D03D9B /* SwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwitchCell.m; sourceTree = "<group>"; };
+		318AEB391A91672B00D03D9B /* SwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchCell.xib; sourceTree = "<group>"; };
 		31AC10731A8F3901005A3AF8 /* FiltersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FiltersViewController.h; sourceTree = "<group>"; };
 		31AC10741A8F3901005A3AF8 /* FiltersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FiltersViewController.m; sourceTree = "<group>"; };
 		31AC10751A8F3901005A3AF8 /* FiltersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FiltersViewController.xib; sourceTree = "<group>"; };
@@ -76,6 +86,10 @@
 		870310ED5FF2798A49950811 /* libPods-YelpTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YelpTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DEC6D18C14F46F8AF2EA320 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F0DDE2206A8878B947A3BEF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		AA8EF376AC1A611A87A4731A /* YelpException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpException.m; sourceTree = "<group>"; };
+		AA8EF54D5E1C58014D4CAB7B /* YelpException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpException.h; sourceTree = "<group>"; };
+		AA8EF72EBCCB0572C9A605E6 /* Filters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Filters.m; sourceTree = "<group>"; };
+		AA8EF7730CF5E1986971C606 /* Filters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Filters.h; sourceTree = "<group>"; };
 		E2ECF01371FAF0BEBC2AE870 /* Pods-YelpTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YelpTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-YelpTests/Pods-YelpTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,11 +119,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		318AEB331A8FC76800D03D9B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				318AEB341A8FC78200D03D9B /* UIHelper.h */,
+				318AEB351A8FC78200D03D9B /* UIHelper.m */,
+				AA8EF376AC1A611A87A4731A /* YelpException.m */,
+				AA8EF54D5E1C58014D4CAB7B /* YelpException.h */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		31DCECF81A8B330F00B0C23B /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				31DCECF91A8B331C00B0C23B /* Business.h */,
 				31DCECFA1A8B331C00B0C23B /* Business.m */,
+				AA8EF72EBCCB0572C9A605E6 /* Filters.m */,
+				AA8EF7730CF5E1986971C606 /* Filters.h */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -120,6 +147,9 @@
 				31DCECFD1A8B3B6A00B0C23B /* BusinessCell.h */,
 				31DCECFE1A8B3B6A00B0C23B /* BusinessCell.m */,
 				31DCECFF1A8B3B6A00B0C23B /* BusinessCell.xib */,
+				318AEB371A91672B00D03D9B /* SwitchCell.h */,
+				318AEB381A91672B00D03D9B /* SwitchCell.m */,
+				318AEB391A91672B00D03D9B /* SwitchCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -182,6 +212,7 @@
 		42FD6C5018DC286B000BF2B9 /* Yelp */ = {
 			isa = PBXGroup;
 			children = (
+				318AEB331A8FC76800D03D9B /* Helpers */,
 				31AC107A1A8F4218005A3AF8 /* Images.xcassets */,
 				31DCECFC1A8B3B4100B0C23B /* Views */,
 				31DCECF81A8B330F00B0C23B /* Models */,
@@ -318,6 +349,7 @@
 				31DCED011A8B3B6A00B0C23B /* BusinessCell.xib in Resources */,
 				31AC10771A8F3901005A3AF8 /* FiltersViewController.xib in Resources */,
 				420474FC18DC2B2100E88E07 /* MainViewController.xib in Resources */,
+				318AEB3B1A91672B00D03D9B /* SwitchCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,10 +434,14 @@
 				31AC10761A8F3901005A3AF8 /* FiltersViewController.m in Sources */,
 				31DCECFB1A8B331C00B0C23B /* Business.m in Sources */,
 				42FD6C5B18DC286B000BF2B9 /* AppDelegate.m in Sources */,
+				318AEB361A8FC78200D03D9B /* UIHelper.m in Sources */,
 				42FD6C5718DC286B000BF2B9 /* main.m in Sources */,
 				420474F618DC299500E88E07 /* YelpClient.m in Sources */,
 				420474FB18DC2B2100E88E07 /* MainViewController.m in Sources */,
 				31DCED001A8B3B6A00B0C23B /* BusinessCell.m in Sources */,
+				AA8EF3B5B26BE80F2A0B886F /* Filters.m in Sources */,
+				318AEB3A1A91672B00D03D9B /* SwitchCell.m in Sources */,
+				AA8EF07FA9DF69CA2ED9C541 /* YelpException.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

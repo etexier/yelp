@@ -7,16 +7,66 @@
 //
 
 #import "FiltersViewController.h"
+#import "SwitchCell.h"
+#import "Filters.h"
+#import "YelpException.h"
 
-@interface FiltersViewController ()
+@interface FiltersViewController () <UITableViewDelegate, UITableViewDataSource, FiltersViewControllerDelegate, SwitchCellDelegate>
+
+@property(weak, nonatomic) IBOutlet UITableView *tableView;
+@property(nonatomic, strong) Filters *filters;
+@property(nonatomic, strong) NSMutableDictionary *expandedSections;
+@property (nonatomic, strong) UISwitch *dealsSwitch;
+
+
+- (void)onCancelButton;
+
+- (void)onApplyButton;
+
 
 @end
 
+
 @implementation FiltersViewController
+
+#pragma mark - UIViewController methods
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        self.title = @"Filters";
+        self.filters = [[Filters alloc] initWithDefaults];
+        self.expandedSections = [NSMutableDictionary dictionary];
+        self.dealsSwitch = [[UISwitch alloc] init];
+        [self.dealsSwitch addTarget:self
+                             action:@selector(onDealsSwitch)
+                   forControlEvents:UIControlEventValueChanged];
+    }
+
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+
+    // initialize navigation bar
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
+                                                                             style:UIBarButtonItemStylePlain
+                                                                            target:self
+                                                                            action:@selector(onCancelButton)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Apply"
+                                                                              style:UIBarButtonItemStylePlain
+                                                                             target:self
+                                                                             action:@selector(onApplyButton)];
+
+    // table view delegates
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+
+    // cell registration
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"FiltersCell"];
+//    [self.tableView registerNib:[UINib nibWithNibName:@"SwitchCell" bundle:nil]
+//         forCellReuseIdentifier:@"SwitchCell"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,14 +74,261 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - Table view delegate methods
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+
+    NSInteger section = indexPath.section;
+    NSInteger row = indexPath.row;
+
+    switch (section) {
+        case FilterDistance:
+        case FilterSortMode:
+            if ([self sectionExpanded:section]) { // collapse section
+                [self collapseSection:section selectedRow:indexPath.row];
+            } else {
+                [self expandSection:section];
+            }
+            break;
+        case FilterDealsOnly:
+            // select switch instead
+            break;
+        case FilterCategories:
+            if (![self sectionExpanded:section] && row == 3) {
+                [self expandSection:section];
+            } else {
+                NSUInteger category = (NSUInteger) row;
+                [self toggleCategory:category];
+            }
+            break;
+
+        default:
+            @throw [YelpException throwsException];
+    }
+
 }
-*/
+
+#pragma mark - Table view data source methods
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    switch (section) {
+        case FilterDistance:
+            return @"Distance";
+        case FilterSortMode:
+            return @"Sort By";
+        case FilterDealsOnly:
+            return @"Offering Deals";
+        case FilterCategories:
+            return @"Categories";  // only restaurants for the moment
+        default:
+            @throw [YelpException throwsException];
+    }
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+
+    switch (section) {
+        case FilterDistance:
+            if ([self sectionExpanded:section]) {
+                return self.filters.distances.count;
+            } else {
+                return 1;
+            }
+        case FilterSortMode:
+            if ([self sectionExpanded:section]) {
+                return self.filters.sortModes.count;
+            } else {
+                return 1;
+            }
+        case FilterDealsOnly:
+            return 1;
+        case FilterCategories:
+            if ([self sectionExpanded:section]) {
+                return self.filters.categories.count;
+            } else {
+                return 4; // including "See all" row
+            }
+        default:
+            @throw [YelpException throwsException];
+    }
+
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return FilterCount;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FiltersCell" forIndexPath:indexPath];
+    cell.accessoryView = nil;
+    cell.accessoryType = UITableViewCellAccessoryNone;
+
+    NSInteger section = indexPath.section;
+    NSInteger row = indexPath.row;
+
+    switch (section) {
+        case FilterDistance: {
+            NSUInteger distanceRow;
+            if ([self sectionExpanded:section]) {
+                distanceRow = (NSUInteger) row;
+                if (distanceRow == [self.filters.selectedDistance unsignedIntegerValue]) {
+                    cell.accessoryType = UITableViewCellAccessoryCheckmark;  // mark as selected
+                }
+            } else {
+                distanceRow = [self.filters.selectedDistance unsignedIntegerValue];
+                cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Cell Expander"]];
+            }
+            // set cell text
+            cell.textLabel.text = self.filters.distances[(NSUInteger) distanceRow][@"name"];
+
+            return cell;
+        }
+        case FilterSortMode: {
+            NSUInteger sortModeRow;
+            if ([self sectionExpanded:section]) {
+                sortModeRow = (NSUInteger) row;
+                if (sortModeRow == [self.filters.selectedSortMode unsignedIntegerValue]) {
+                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                }
+            } else {
+                sortModeRow = [self.filters.selectedSortMode unsignedIntegerValue];
+                cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Cell Expander"]];
+            }
+            cell.textLabel.text = self.filters.sortModes[(NSUInteger) sortModeRow][@"name"];
+
+            return cell;
+        }
+
+        case FilterDealsOnly: {
+            cell.textLabel.text = @"Offering a Deal";
+            cell.accessoryView = self.dealsSwitch;
+            return cell;
+        }
+        case FilterCategories: {
+            if (![self sectionExpanded:section] && row == 3) {
+                cell.textLabel.text = @"See All";
+                cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Cell Expander"]];
+                return cell;
+            }
+            NSUInteger categoryRow = (NSUInteger) row;
+            cell.textLabel.text = self.filters.categories[categoryRow][@"name"];
+            if ([self.filters.categories containsObject:@(categoryRow)]) {
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            }
+            return cell;
+        }
+
+        default:
+            @throw [YelpException throwsException];
+    }
+
+//    SwitchCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SwitchCell" forIndexPath:indexPath];
+//    cell.delegate = self;
+//    cell.titleLabel.text = self.filters.categories[(NSUInteger) indexPath.row][@"name"];
+//    cell.on = [self.filters.selectedCategories containsObject:self.filters.categories[(NSUInteger) indexPath.row]];
+//    return cell;
+}
+
+#pragma mark - private methods
+
+- (void)onCancelButton {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)onApplyButton {
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.delegate filtersViewController:self didChangeFilters:self.filters];
+}
+
+
+- (void)collapseSection:(NSInteger)section selectedRow:(NSInteger)row {
+    // update the filters
+    NSIndexPath *prevSelectedIndexPath;
+    switch (section) {
+        case FilterDistance:
+            prevSelectedIndexPath = [NSIndexPath indexPathForRow:[self.filters.selectedDistance unsignedIntegerValue]
+                                                       inSection:section];
+            self.filters.selectedDistance = @(row);
+            break;
+        case FilterSortMode:
+            prevSelectedIndexPath = [NSIndexPath indexPathForRow:[self.filters.selectedSortMode unsignedIntegerValue]
+                                                       inSection:section];
+            self.filters.selectedSortMode = @(row);
+            break;
+        default:
+            @throw [YelpException throwsException];
+    }
+
+    // move the checkmark to the newly selected cell
+    UITableViewCell *prevSelectedCell = [self.tableView cellForRowAtIndexPath:prevSelectedIndexPath];
+    prevSelectedCell.accessoryType = UITableViewCellAccessoryNone;
+    NSIndexPath *newSelectedIndexPath = [NSIndexPath indexPathForRow:row inSection:section];
+    UITableViewCell *newSelectedCell = [self.tableView cellForRowAtIndexPath:newSelectedIndexPath];
+    newSelectedCell.accessoryType = UITableViewCellAccessoryCheckmark;
+
+    // mark the section as collapsed and refresh
+    self.expandedSections[@(section)] = @NO;
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:(NSUInteger) section]
+                  withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+- (BOOL)sectionExpanded:(NSInteger)section {
+    return [self.expandedSections[@(section)] boolValue];
+}
+
+- (void)expandSection:(NSInteger)section {
+    self.expandedSections[@(section)] = @YES;
+    [self.tableView reloadSections:[NSIndexSet
+                    indexSetWithIndex:(NSUInteger) section]
+                  withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+- (void)setCategoryAtRow:(NSInteger)row withValue:(BOOL)value {
+    if (value) {
+        [self.filters.selectedCategories addObject:self.filters.categories[(NSUInteger) row]];
+    } else {
+        [self.filters.selectedCategories removeObject:self.filters.categories[(NSUInteger) row]];
+    }
+}
+
+- (void)onDealsSwitch {
+    self.filters.dealsOnlySelected = self.dealsSwitch.on;
+}
+
+- (void)toggleCategory:(NSUInteger)categoryRow {
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:categoryRow inSection:FilterCategories];
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+
+    if ([self.filters.selectedCategories containsObject:@(categoryRow)]) {  // already selected -> remove it.
+        [self.filters.selectedCategories removeObject:@(categoryRow)];
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    } else {
+        [self.filters.selectedCategories addObject:@(categoryRow)]; // add it
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+}
+
+#pragma mark - Switch Cell delegate method
+
+- (void)switchCell:(SwitchCell *)cell
+    didUpdateValue:(BOOL)value {
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    NSInteger row = indexPath.row;
+    NSInteger section = indexPath.section;
+
+    switch (section) { // for the moment only the restaurant category is selection
+        case FilterCategories:
+            [self setCategoryAtRow:row withValue:value];
+            break;
+        default:
+            [YelpException throwsException];
+    }
+}
+
+
 
 @end

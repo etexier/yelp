@@ -8,18 +8,15 @@
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
+#import "UIHelper.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // application style
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
-    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
-    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:0.8 green:0.02 blue:0.02 alpha:1]];
-    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-    
-    
+
+    [UIHelper initializeNavigationBarStyle];
+
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     MainViewController *vc = [[MainViewController alloc] init];
