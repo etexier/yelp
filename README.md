@@ -34,9 +34,10 @@ Time spent: `13hr`
 Note that I intended to use Rest2Mobile, but this meant completely redo what had been done in the walkthrough. The code simply uses AFNetworking.
 ### Walkthrough
 
-![Video Walkthrough](...)
+### Walkthrough
+![Demo](yelp-demo.gif)
 
-
+GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 Credits
 ---------
