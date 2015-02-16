@@ -26,6 +26,7 @@ PODS:
   - CocoaLumberjack/Core (1.9.2)
   - CocoaLumberjack/Extensions (1.9.2):
     - CocoaLumberjack/Core
+  - Google-Maps-iOS-SDK (1.9.2)
   - Kiwi (2.3.1)
   - Mantle (1.5.4):
     - Mantle/extobjc (= 1.5.4)
@@ -56,6 +57,7 @@ PODS:
 
 DEPENDENCIES:
   - BDBOAuth1Manager
+  - Google-Maps-iOS-SDK
   - Kiwi
   - MBProgressHUD
   - Rest2Mobile (from `https://github.com/magnetsystems/r2m-sdk-ios.git`, branch `fix_no_wifi_crash`)
@@ -74,6 +76,7 @@ SPEC CHECKSUMS:
   AFNetworking: 8dde8c8a6597ad95dac332a593c27e541bc87371
   BDBOAuth1Manager: 468477f0425ce24b3a19a34bbf176fac11225232
   CocoaLumberjack: 205769c032b5fef85b92472046bcc8b7e7c8a817
+  Google-Maps-iOS-SDK: 3b89f4c151f8fc3ddb0e70dece9bcab33dbec2ea
   Kiwi: 73e1400209055ee9c8ba78c6012b6b642d0fb9f7
   Mantle: d5fbaf30fbc58031223af13812c060e15934a1fe
   MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8

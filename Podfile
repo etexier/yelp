@@ -5,3 +5,4 @@ target :'YelpTests', :exclusive => true do
 end
 pod 'BDBOAuth1Manager'
 pod 'MBProgressHUD'
+pod 'Google-Maps-iOS-SDK'

@@ -215,7 +215,7 @@
             }
             NSUInteger categoryRow = (NSUInteger) row;
             cell.textLabel.text = self.filters.categories[categoryRow][@"name"];
-            if ([self.filters.categories containsObject:@(categoryRow)]) {
+            if ([self.filters.selectedCategories containsObject:self.filters.categories[categoryRow]]) {
                 cell.accessoryType = UITableViewCellAccessoryCheckmark;
             }
             return cell;
