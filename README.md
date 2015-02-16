@@ -31,8 +31,8 @@ Time spent: `14hr`
 
 ### Additional notes
 
-Note that I intended to use Rest2Mobile, but this meant completely redo what had been done in the walkthrough. The code simply uses AFNetworking.
-### Walkthrough
+* Note that I intended to use Rest2Mobile, but eventually just used AFNetworking as the walkthroughs used it.
+* Started working on the MAP feature using Google Maps API, but couldn't get an API Key for iOS.
 
 ### Walkthrough
 ![Demo](yelp-demo.gif)
