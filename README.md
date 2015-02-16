@@ -1,6 +1,6 @@
 ## Yelp
 
-This is a Yelp search app using the [Yelp API](http://developer.rottentomatoes.com/docs/read/JSON).
+This is a Yelp search app using the [Yelp API](http://www.yelp.com/developers/documentation/v2/search_api).
 
 Time spent: `13hr`
 
@@ -26,12 +26,26 @@ Time spent: `13hr`
    - [ ] Implement map view of restaurant results
 - [ ] Filter page
    - [ ] Radius filter should expand as in the real Yelp app
-   - [X] Categories should show a subset of the full list with a "See All" row to expand. Category list is here: http://www.yelp.com/developers/documentation/category_list (Links to an external site.)
+   - [X] Categories should show a subset of the full list with a "See All" row to expand. 
 - [ ] Implement the restaurant detail page.
 
+### Additional notes
+
+Note that I intended to use Rest2Mobile, but this meant completely redo what had been done in the walkthrough. The code simply uses AFNetworking.
 ### Walkthrough
 
 ![Video Walkthrough](...)
 
 
 
+Credits
+---------
+* [Yelp API](http://www.yelp.com/developers/documentation)
+* [AFNetworking](https://github.com/AFNetworking/AFNetworking)
+* [Rest2Mobile](https://github.com/magnetsystems/rest2mobile)
+* Icon made by [Google](http://www.google.com) from [FlatIcon](http://www.flaticon.com>, is licensed by [Creative Commons BY 3.0](http://creativecommons.org/licenses/by/3.0/)
+
+### License
+
+Licensed under the **[Apache License, Version 2.0] [license]** (the "License");
+you may not use this software except in compliance with the License.
