@@ -7,11 +7,10 @@
 //
 
 #import "FiltersViewController.h"
-#import "SwitchCell.h"
 #import "Filters.h"
 #import "YelpException.h"
 
-@interface FiltersViewController () <UITableViewDelegate, UITableViewDataSource, FiltersViewControllerDelegate, SwitchCellDelegate>
+@interface FiltersViewController () <UITableViewDelegate, UITableViewDataSource, FiltersViewControllerDelegate>
 
 @property(weak, nonatomic) IBOutlet UITableView *tableView;
 @property(nonatomic, strong) Filters *filters;
@@ -147,7 +146,7 @@
             return 1;
         case FilterCategories:
             if ([self sectionExpanded:section]) {
-                return self.filters.categories.count;
+                return self.filters.categories.count; // all of it
             } else {
                 return 4; // including "See all" row
             }
@@ -226,11 +225,6 @@
             @throw [YelpException throwsException];
     }
 
-//    SwitchCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SwitchCell" forIndexPath:indexPath];
-//    cell.delegate = self;
-//    cell.titleLabel.text = self.filters.categories[(NSUInteger) indexPath.row][@"name"];
-//    cell.on = [self.filters.selectedCategories containsObject:self.filters.categories[(NSUInteger) indexPath.row]];
-//    return cell;
 }
 
 #pragma mark - private methods
@@ -246,7 +240,6 @@
 
 
 - (void)collapseSection:(NSInteger)section selectedRow:(NSInteger)row {
-    // update the filters
     NSIndexPath *prevSelectedIndexPath;
     switch (section) {
         case FilterDistance:
@@ -263,14 +256,12 @@
             @throw [YelpException throwsException];
     }
 
-    // move the checkmark to the newly selected cell
     UITableViewCell *prevSelectedCell = [self.tableView cellForRowAtIndexPath:prevSelectedIndexPath];
     prevSelectedCell.accessoryType = UITableViewCellAccessoryNone;
     NSIndexPath *newSelectedIndexPath = [NSIndexPath indexPathForRow:row inSection:section];
     UITableViewCell *newSelectedCell = [self.tableView cellForRowAtIndexPath:newSelectedIndexPath];
     newSelectedCell.accessoryType = UITableViewCellAccessoryCheckmark;
 
-    // mark the section as collapsed and refresh
     self.expandedSections[@(section)] = @NO;
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:(NSUInteger) section]
                   withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -287,48 +278,25 @@
                   withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
-- (void)setCategoryAtRow:(NSInteger)row withValue:(BOOL)value {
-    if (value) {
-        [self.filters.selectedCategories addObject:self.filters.categories[(NSUInteger) row]];
-    } else {
-        [self.filters.selectedCategories removeObject:self.filters.categories[(NSUInteger) row]];
-    }
-}
 
 - (void)onDealsSwitch {
     self.filters.dealsOnlySelected = self.dealsSwitch.on;
 }
 
-- (void)toggleCategory:(NSUInteger)categoryRow {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:categoryRow inSection:FilterCategories];
+- (void)toggleCategory:(NSUInteger)categoryIndex {
+
+    // find the cell for this category
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:categoryIndex inSection:FilterCategories];
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
 
-    if ([self.filters.selectedCategories containsObject:@(categoryRow)]) {  // already selected -> remove it.
-        [self.filters.selectedCategories removeObject:@(categoryRow)];
+    // check if already selected
+    if ([self.filters.selectedCategories containsObject:self.filters.categories[categoryIndex]]) {  // already selected -> remove it.
+        [self.filters.selectedCategories removeObject:self.filters.categories[categoryIndex]];
         cell.accessoryType = UITableViewCellAccessoryNone;
     } else {
-        [self.filters.selectedCategories addObject:@(categoryRow)]; // add it
+        [self.filters.selectedCategories addObject:self.filters.categories[categoryIndex]]; // add it
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
 }
-
-#pragma mark - Switch Cell delegate method
-
-- (void)switchCell:(SwitchCell *)cell
-    didUpdateValue:(BOOL)value {
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-    NSInteger row = indexPath.row;
-    NSInteger section = indexPath.section;
-
-    switch (section) { // for the moment only the restaurant category is selection
-        case FilterCategories:
-            [self setCategoryAtRow:row withValue:value];
-            break;
-        default:
-            [YelpException throwsException];
-    }
-}
-
-
 
 @end

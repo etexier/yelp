@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		318AEB361A8FC78200D03D9B /* UIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 318AEB351A8FC78200D03D9B /* UIHelper.m */; };
-		318AEB3A1A91672B00D03D9B /* SwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 318AEB381A91672B00D03D9B /* SwitchCell.m */; };
-		318AEB3B1A91672B00D03D9B /* SwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 318AEB391A91672B00D03D9B /* SwitchCell.xib */; };
 		31AC10761A8F3901005A3AF8 /* FiltersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31AC10741A8F3901005A3AF8 /* FiltersViewController.m */; };
 		31AC10771A8F3901005A3AF8 /* FiltersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31AC10751A8F3901005A3AF8 /* FiltersViewController.xib */; };
 		31AC107B1A8F4218005A3AF8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31AC107A1A8F4218005A3AF8 /* Images.xcassets */; };
@@ -49,9 +47,6 @@
 /* Begin PBXFileReference section */
 		318AEB341A8FC78200D03D9B /* UIHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIHelper.h; sourceTree = "<group>"; };
 		318AEB351A8FC78200D03D9B /* UIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIHelper.m; sourceTree = "<group>"; };
-		318AEB371A91672B00D03D9B /* SwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwitchCell.h; sourceTree = "<group>"; };
-		318AEB381A91672B00D03D9B /* SwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwitchCell.m; sourceTree = "<group>"; };
-		318AEB391A91672B00D03D9B /* SwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchCell.xib; sourceTree = "<group>"; };
 		31AC10731A8F3901005A3AF8 /* FiltersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FiltersViewController.h; sourceTree = "<group>"; };
 		31AC10741A8F3901005A3AF8 /* FiltersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FiltersViewController.m; sourceTree = "<group>"; };
 		31AC10751A8F3901005A3AF8 /* FiltersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FiltersViewController.xib; sourceTree = "<group>"; };
@@ -147,9 +142,6 @@
 				31DCECFD1A8B3B6A00B0C23B /* BusinessCell.h */,
 				31DCECFE1A8B3B6A00B0C23B /* BusinessCell.m */,
 				31DCECFF1A8B3B6A00B0C23B /* BusinessCell.xib */,
-				318AEB371A91672B00D03D9B /* SwitchCell.h */,
-				318AEB381A91672B00D03D9B /* SwitchCell.m */,
-				318AEB391A91672B00D03D9B /* SwitchCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -349,7 +341,6 @@
 				31DCED011A8B3B6A00B0C23B /* BusinessCell.xib in Resources */,
 				31AC10771A8F3901005A3AF8 /* FiltersViewController.xib in Resources */,
 				420474FC18DC2B2100E88E07 /* MainViewController.xib in Resources */,
-				318AEB3B1A91672B00D03D9B /* SwitchCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,7 +431,6 @@
 				420474FB18DC2B2100E88E07 /* MainViewController.m in Sources */,
 				31DCED001A8B3B6A00B0C23B /* BusinessCell.m in Sources */,
 				AA8EF3B5B26BE80F2A0B886F /* Filters.m in Sources */,
-				318AEB3A1A91672B00D03D9B /* SwitchCell.m in Sources */,
 				AA8EF07FA9DF69CA2ED9C541 /* YelpException.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
