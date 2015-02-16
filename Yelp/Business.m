@@ -8,6 +8,8 @@
 
 #import "Business.h"
 
+
+
 @implementation Business
 
 - (id)initWithDictionary:(NSDictionary *)dictionary {
@@ -42,12 +44,24 @@
         self.ratingImageUrl = dictionary[@"rating_img_url"];
         float milesPerMeter = 0.000621371;
         self.distance = [dictionary[@"distance"] integerValue] * milesPerMeter;
+
+        double latitude, longitude;
+
+        NSString *latString = [dictionary valueForKeyPath:@"location.latitude"];
+        NSString *longString = [dictionary valueForKeyPath:@"location.longitude"];
+        if (latString && longString) {
+            // there is a position
+            latitude = [latString doubleValue];
+            longitude = [latString doubleValue];
+            self.coordinate = CLLocationCoordinate2DMake(latitude, longitude);
+        }
+
     }
 
     return self;
 }
 
-+ (NSArray *)bussinessesWithDictionaries:(NSArray *)dictionaries {
++ (NSArray *)businessesWithDictionaries:(NSArray *)dictionaries {
     NSMutableArray *businesses = [NSMutableArray array];
     for (NSDictionary *dictionary in dictionaries) {
         Business *business = [[Business alloc] initWithDictionary:dictionary];

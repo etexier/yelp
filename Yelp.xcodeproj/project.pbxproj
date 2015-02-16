@@ -31,6 +31,7 @@
 		63E591F41F684901AF8C1C19 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DEC6D18C14F46F8AF2EA320 /* libPods.a */; };
 		AA8EF07FA9DF69CA2ED9C541 /* YelpException.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8EF376AC1A611A87A4731A /* YelpException.m */; };
 		AA8EF3B5B26BE80F2A0B886F /* Filters.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8EF72EBCCB0572C9A605E6 /* Filters.m */; };
+		AA8EFCF27A5EE86F6C715B63 /* BusinessesMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8EF6683FA80F0B2B91843F /* BusinessesMapView.m */; };
 		EE68910D2D716CBDBF6FE228 /* libPods-YelpTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 870310ED5FF2798A49950811 /* libPods-YelpTests.a */; };
 /* End PBXBuildFile section */
 
@@ -83,8 +84,10 @@
 		9F0DDE2206A8878B947A3BEF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		AA8EF376AC1A611A87A4731A /* YelpException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpException.m; sourceTree = "<group>"; };
 		AA8EF54D5E1C58014D4CAB7B /* YelpException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpException.h; sourceTree = "<group>"; };
+		AA8EF6683FA80F0B2B91843F /* BusinessesMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessesMapView.m; sourceTree = "<group>"; };
 		AA8EF72EBCCB0572C9A605E6 /* Filters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Filters.m; sourceTree = "<group>"; };
 		AA8EF7730CF5E1986971C606 /* Filters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Filters.h; sourceTree = "<group>"; };
+		AA8EF7842AB209B113BB7E1E /* BusinessesMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessesMapView.h; sourceTree = "<group>"; };
 		E2ECF01371FAF0BEBC2AE870 /* Pods-YelpTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YelpTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-YelpTests/Pods-YelpTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -142,6 +145,8 @@
 				31DCECFD1A8B3B6A00B0C23B /* BusinessCell.h */,
 				31DCECFE1A8B3B6A00B0C23B /* BusinessCell.m */,
 				31DCECFF1A8B3B6A00B0C23B /* BusinessCell.xib */,
+				AA8EF6683FA80F0B2B91843F /* BusinessesMapView.m */,
+				AA8EF7842AB209B113BB7E1E /* BusinessesMapView.h */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -432,6 +437,7 @@
 				31DCED001A8B3B6A00B0C23B /* BusinessCell.m in Sources */,
 				AA8EF3B5B26BE80F2A0B886F /* Filters.m in Sources */,
 				AA8EF07FA9DF69CA2ED9C541 /* YelpException.m in Sources */,
+				AA8EFCF27A5EE86F6C715B63 /* BusinessesMapView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

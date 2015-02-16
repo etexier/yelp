@@ -9,11 +9,17 @@
 #import "AppDelegate.h"
 #import "MainViewController.h"
 #import "UIHelper.h"
+#import <GoogleMaps/GoogleMaps.h>
+
+NSString * const kGMSApiKey = @"AIzaSyB2toym73ZG_YLZK-btrFEYxNrvA4lWAWI";
+
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // init google maps api
+    [GMSServices provideAPIKey:kGMSApiKey];
 
     [UIHelper initializeNavigationBarStyle];
 

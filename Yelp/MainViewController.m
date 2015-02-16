@@ -12,7 +12,7 @@
 #import "Businesscell.h"
 #import "MBProgressHUD.h"
 #import "UIHelper.h"
-#import "YelpException.h"
+#import "BusinessesMapView.h"
 #import "Filters.h"
 
 // Yelp keys
@@ -20,6 +20,7 @@ NSString *const kYelpConsumerKey = @"hglIeq2RP56tBDlBFB1omA";
 NSString *const kYelpConsumerSecret = @"E7ikJ1kWzg7itMokjzlMv4pL23Y";
 NSString *const kYelpToken = @"zW60JK66xpVTz2rbfIRQTYTijolZLeTX";
 NSString *const kYelpTokenSecret = @"-4MnwTvRtE93DRKn9eNfyblZxzw";
+
 
 
 // other constants
@@ -32,11 +33,15 @@ NSString *const kDefaultSearchText = @"Restaurant";
 @interface MainViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, FiltersViewControllerDelegate>
 
 @property(nonatomic, strong) YelpClient *client;
+@property (weak, nonatomic) IBOutlet BusinessesMapView *mapView;
 @property(atomic, strong) NSArray *businesses;
 @property(nonatomic, weak) IBOutlet UITableView *tableView;
 @property(nonatomic, strong) UISearchBar *searchBar;
 @property(nonatomic, strong) UIBarButtonItem *filtersButton;
 @property(nonatomic, strong) UIBarButtonItem *mapButton;
+
+@property (nonatomic) BOOL showingMap;
+
 
 - (void)searchWithText:(NSString *)text params:(NSDictionary *)params;
 
@@ -96,6 +101,9 @@ NSString *const kDefaultSearchText = @"Restaurant";
 
     // cell auto dim.
     self.tableView.rowHeight = UITableViewAutomaticDimension;
+
+    // not showing map yet.
+    self.showingMap = NO;
 
     self.title = kTitle; // not seen anyway
 
@@ -169,12 +177,32 @@ NSString *const kDefaultSearchText = @"Restaurant";
     fvc.delegate = self; // to receive the apply event
     UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:fvc];
     [self presentViewController:nvc animated:YES completion:nil];
+}
+
+- (void)onMapButton
+{
+    if (self.showingMap) {
+        // flip back to the list
+        [UIView transitionFromView:self.mapView
+                            toView:self.tableView
+                          duration:1.0
+                           options:UIViewAnimationOptionTransitionFlipFromLeft|UIViewAnimationOptionShowHideTransitionViews
+                        completion:nil];
+        self.mapButton.title = @"Map";
+        self.showingMap = NO;
+        return;
+    }
+        // flip to the map
+        [UIView transitionFromView:self.tableView
+                            toView:self.mapView
+                          duration:1.0
+                           options:UIViewAnimationOptionTransitionFlipFromRight|UIViewAnimationOptionShowHideTransitionViews
+                        completion:nil];
+        self.mapButton.title = @"List";
+        self.showingMap = YES;
 
 }
 
-- (void)onMapButton {
-    // show map
-}
 
 - (void)searchWithText:(NSString *)searchText params:(NSDictionary *)params {
 
@@ -184,7 +212,7 @@ NSString *const kDefaultSearchText = @"Restaurant";
         NSLog(@"response: %@", response);
         // initialize model
         NSArray *businessDictionaries = response[@"businesses"];
-        self.businesses = [Business bussinessesWithDictionaries:businessDictionaries];
+        self.businesses = [Business businessesWithDictionaries:businessDictionaries];
         [self.tableView reloadData];
         // end spinner
         [MBProgressHUD hideHUDForView:self.view animated:YES];

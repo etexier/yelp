@@ -7,6 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MapKit/MapKit.h>
+
+
 
 @interface Business : NSObject
 
@@ -17,7 +20,9 @@
 @property (nonatomic, strong) NSString *address;
 @property (nonatomic, strong) NSString *categories;
 @property (nonatomic, assign) CGFloat distance;
+@property (nonatomic, readwrite) CLLocationCoordinate2D coordinate;
 
-+(NSArray *) bussinessesWithDictionaries:(NSArray *)dictionaries;
+
++(NSArray *)businessesWithDictionaries:(NSArray *)dictionaries;
 
 @end
