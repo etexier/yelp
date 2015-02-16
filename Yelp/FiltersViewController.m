@@ -179,7 +179,7 @@
                 }
             } else {
                 distanceRow = [self.filters.selectedDistance unsignedIntegerValue];
-                cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Cell Expander"]];
+                cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"drop25"]];
             }
             // set cell text
             cell.textLabel.text = self.filters.distances[(NSUInteger) distanceRow][@"name"];
@@ -195,7 +195,7 @@
                 }
             } else {
                 sortModeRow = [self.filters.selectedSortMode unsignedIntegerValue];
-                cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Cell Expander"]];
+                cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"drop25"]];
             }
             cell.textLabel.text = self.filters.sortModes[(NSUInteger) sortModeRow][@"name"];
 
@@ -210,7 +210,7 @@
         case FilterCategories: {
             if (![self sectionExpanded:section] && row == 3) {
                 cell.textLabel.text = @"See All";
-                cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Cell Expander"]];
+                cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"drop25"]];
                 return cell;
             }
             NSUInteger categoryRow = (NSUInteger) row;

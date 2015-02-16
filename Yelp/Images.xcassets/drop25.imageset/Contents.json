@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "drop25_24x24.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "cell_expand_50-1.png"
+      "scale" : "2x"
     },
     {
       "idiom" : "universal",
