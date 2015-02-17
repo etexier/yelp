@@ -43,8 +43,8 @@ Credits
 * [Yelp API](http://www.yelp.com/developers/documentation)
 * [AFNetworking](https://github.com/AFNetworking/AFNetworking)
 * [Rest2Mobile](https://github.com/magnetsystems/rest2mobile)
-* Icon made by [Google](http://www.google.com) from [FlatIcon](http://www.flaticon.com>, is licensed by [Creative Commons BY 3.0](http://creativecommons.org/licenses/by/3.0/)
-
+* Map Icon made by [Google](http://www.google.com) from [FlatIcon](http://www.flaticon.com>, is licensed by [Creative Commons BY 3.0](http://creativecommons.org/licenses/by/3.0/)
+* List Icon made by [Freepik](http://www.freepik.com) from [Flaticon](http://www.flaticon.com) is licensed under [Creative Commons BY 3.0](http://creativecommons.org/licenses/by/3.0/)
 ### License
 
 Licensed under the **[Apache License, Version 2.0] [license]** (the "License");

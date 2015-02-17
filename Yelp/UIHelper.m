@@ -16,6 +16,10 @@
     return [UIImage imageNamed:@"map79.png"];
 }
 
++ (UIImage *)getListImage {
+    return [UIImage imageNamed:@"list95.png"];
+}
+
 + (UIColor *)getRedColor {
     return [UIColor colorWithRed:0.8 green:0.02 blue:0.02 alpha:1];
 }

@@ -11,6 +11,7 @@
 		31AC10761A8F3901005A3AF8 /* FiltersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31AC10741A8F3901005A3AF8 /* FiltersViewController.m */; };
 		31AC10771A8F3901005A3AF8 /* FiltersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31AC10751A8F3901005A3AF8 /* FiltersViewController.xib */; };
 		31AC107B1A8F4218005A3AF8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31AC107A1A8F4218005A3AF8 /* Images.xcassets */; };
+		31D8E4131A9307DF0049961D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31D8E4121A9307DF0049961D /* MapKit.framework */; };
 		31DCECFB1A8B331C00B0C23B /* Business.m in Sources */ = {isa = PBXBuildFile; fileRef = 31DCECFA1A8B331C00B0C23B /* Business.m */; };
 		31DCED001A8B3B6A00B0C23B /* BusinessCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 31DCECFE1A8B3B6A00B0C23B /* BusinessCell.m */; };
 		31DCED011A8B3B6A00B0C23B /* BusinessCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31DCECFF1A8B3B6A00B0C23B /* BusinessCell.xib */; };
@@ -31,7 +32,6 @@
 		63E591F41F684901AF8C1C19 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DEC6D18C14F46F8AF2EA320 /* libPods.a */; };
 		AA8EF07FA9DF69CA2ED9C541 /* YelpException.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8EF376AC1A611A87A4731A /* YelpException.m */; };
 		AA8EF3B5B26BE80F2A0B886F /* Filters.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8EF72EBCCB0572C9A605E6 /* Filters.m */; };
-		AA8EFCF27A5EE86F6C715B63 /* BusinessesMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8EF6683FA80F0B2B91843F /* BusinessesMapView.m */; };
 		EE68910D2D716CBDBF6FE228 /* libPods-YelpTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 870310ED5FF2798A49950811 /* libPods-YelpTests.a */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +52,7 @@
 		31AC10741A8F3901005A3AF8 /* FiltersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FiltersViewController.m; sourceTree = "<group>"; };
 		31AC10751A8F3901005A3AF8 /* FiltersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FiltersViewController.xib; sourceTree = "<group>"; };
 		31AC107A1A8F4218005A3AF8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		31D8E4121A9307DF0049961D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		31DCECF91A8B331C00B0C23B /* Business.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Business.h; sourceTree = "<group>"; };
 		31DCECFA1A8B331C00B0C23B /* Business.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Business.m; sourceTree = "<group>"; };
 		31DCECFD1A8B3B6A00B0C23B /* BusinessCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessCell.h; sourceTree = "<group>"; };
@@ -84,10 +85,8 @@
 		9F0DDE2206A8878B947A3BEF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		AA8EF376AC1A611A87A4731A /* YelpException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpException.m; sourceTree = "<group>"; };
 		AA8EF54D5E1C58014D4CAB7B /* YelpException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpException.h; sourceTree = "<group>"; };
-		AA8EF6683FA80F0B2B91843F /* BusinessesMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessesMapView.m; sourceTree = "<group>"; };
 		AA8EF72EBCCB0572C9A605E6 /* Filters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Filters.m; sourceTree = "<group>"; };
 		AA8EF7730CF5E1986971C606 /* Filters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Filters.h; sourceTree = "<group>"; };
-		AA8EF7842AB209B113BB7E1E /* BusinessesMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessesMapView.h; sourceTree = "<group>"; };
 		E2ECF01371FAF0BEBC2AE870 /* Pods-YelpTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YelpTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-YelpTests/Pods-YelpTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -96,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31D8E4131A9307DF0049961D /* MapKit.framework in Frameworks */,
 				42FD6C4D18DC286B000BF2B9 /* CoreGraphics.framework in Frameworks */,
 				42FD6C4F18DC286B000BF2B9 /* UIKit.framework in Frameworks */,
 				42FD6C4B18DC286B000BF2B9 /* Foundation.framework in Frameworks */,
@@ -145,8 +145,6 @@
 				31DCECFD1A8B3B6A00B0C23B /* BusinessCell.h */,
 				31DCECFE1A8B3B6A00B0C23B /* BusinessCell.m */,
 				31DCECFF1A8B3B6A00B0C23B /* BusinessCell.xib */,
-				AA8EF6683FA80F0B2B91843F /* BusinessesMapView.m */,
-				AA8EF7842AB209B113BB7E1E /* BusinessesMapView.h */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -196,6 +194,7 @@
 		42FD6C4918DC286B000BF2B9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				31D8E4121A9307DF0049961D /* MapKit.framework */,
 				42FD6C4A18DC286B000BF2B9 /* Foundation.framework */,
 				42FD6C4C18DC286B000BF2B9 /* CoreGraphics.framework */,
 				42FD6C4E18DC286B000BF2B9 /* UIKit.framework */,
@@ -437,7 +436,6 @@
 				31DCED001A8B3B6A00B0C23B /* BusinessCell.m in Sources */,
 				AA8EF3B5B26BE80F2A0B886F /* Filters.m in Sources */,
 				AA8EF07FA9DF69CA2ED9C541 /* YelpException.m in Sources */,
-				AA8EFCF27A5EE86F6C715B63 /* BusinessesMapView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

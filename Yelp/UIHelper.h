@@ -11,6 +11,7 @@
 @interface UIHelper : NSObject
 
 +(UIImage *) getMapImage;
++ (UIImage *)getListImage;
 +(UIColor *) getRedColor;
 
 +(void)initializeNavigationBarStyle;

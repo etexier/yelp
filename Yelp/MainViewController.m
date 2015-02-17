@@ -12,7 +12,6 @@
 #import "Businesscell.h"
 #import "MBProgressHUD.h"
 #import "UIHelper.h"
-#import "BusinessesMapView.h"
 #import "Filters.h"
 
 // Yelp keys
@@ -22,7 +21,6 @@ NSString *const kYelpToken = @"zW60JK66xpVTz2rbfIRQTYTijolZLeTX";
 NSString *const kYelpTokenSecret = @"-4MnwTvRtE93DRKn9eNfyblZxzw";
 
 
-
 // other constants
 //NSString *const kMapButtonTitle = @"Map";
 NSString *const kFiltersButtonTitle = @"Filters";
@@ -30,17 +28,21 @@ NSString *const kTitle = @"List";
 NSString *const kDefaultSearchText = @"Restaurant";
 
 
-@interface MainViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, FiltersViewControllerDelegate>
+@interface MainViewController () <UITableViewDataSource,
+        UITableViewDelegate,
+        UISearchBarDelegate,
+        FiltersViewControllerDelegate,
+        MKMapViewDelegate>
+@property(weak, nonatomic) IBOutlet MKMapView *mapView;
 
 @property(nonatomic, strong) YelpClient *client;
-@property (weak, nonatomic) IBOutlet BusinessesMapView *mapView;
 @property(atomic, strong) NSArray *businesses;
 @property(nonatomic, weak) IBOutlet UITableView *tableView;
 @property(nonatomic, strong) UISearchBar *searchBar;
 @property(nonatomic, strong) UIBarButtonItem *filtersButton;
 @property(nonatomic, strong) UIBarButtonItem *mapButton;
 
-@property (nonatomic) BOOL showingMap;
+@property(nonatomic) BOOL showingMap;
 
 
 - (void)searchWithText:(NSString *)text params:(NSDictionary *)params;
@@ -94,6 +96,7 @@ NSString *const kDefaultSearchText = @"Restaurant";
     self.searchBar.delegate = self;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.mapView.delegate = self;
 
 
     // cell registration
@@ -108,6 +111,14 @@ NSString *const kDefaultSearchText = @"Restaurant";
     self.title = kTitle; // not seen anyway
 
 
+}
+
+
+#pragma mark - Map View delegate methods
+
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 800, 800);
+    [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
 }
 
 
@@ -179,27 +190,26 @@ NSString *const kDefaultSearchText = @"Restaurant";
     [self presentViewController:nvc animated:YES completion:nil];
 }
 
-- (void)onMapButton
-{
+- (void)onMapButton {
     if (self.showingMap) {
         // flip back to the list
         [UIView transitionFromView:self.mapView
                             toView:self.tableView
                           duration:1.0
-                           options:UIViewAnimationOptionTransitionFlipFromLeft|UIViewAnimationOptionShowHideTransitionViews
+                           options:UIViewAnimationOptionTransitionFlipFromLeft | UIViewAnimationOptionShowHideTransitionViews
                         completion:nil];
-        self.mapButton.title = @"Map";
+        self.mapButton.image = [UIHelper getMapImage];
         self.showingMap = NO;
         return;
     }
-        // flip to the map
-        [UIView transitionFromView:self.tableView
-                            toView:self.mapView
-                          duration:1.0
-                           options:UIViewAnimationOptionTransitionFlipFromRight|UIViewAnimationOptionShowHideTransitionViews
-                        completion:nil];
-        self.mapButton.title = @"List";
-        self.showingMap = YES;
+    // flip to the map
+    [UIView transitionFromView:self.tableView
+                        toView:self.mapView
+                      duration:1.0
+                       options:UIViewAnimationOptionTransitionFlipFromRight | UIViewAnimationOptionShowHideTransitionViews
+                    completion:nil];
+    self.mapButton.image = [UIHelper getListImage];
+    self.showingMap = YES;
 
 }
 

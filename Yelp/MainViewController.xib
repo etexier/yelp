@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController">
             <connections>
-                <outlet property="mapView" destination="nIu-Tc-sES" id="HJg-Mo-MCb"/>
+                <outlet property="mapView" destination="Dxg-eL-0NG" id="KWw-Ds-y8U"/>
                 <outlet property="tableView" destination="rgG-Am-Scy" id="v24-0k-6zw"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -17,10 +17,9 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nIu-Tc-sES" customClass="BusinessesMapView">
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dxg-eL-0NG">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </view>
+                </mapView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="rgG-Am-Scy">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -28,14 +27,14 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="Dxg-eL-0NG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="AF2-wb-Ist"/>
                 <constraint firstAttribute="bottom" secondItem="rgG-Am-Scy" secondAttribute="bottom" id="FGh-NR-UoO"/>
                 <constraint firstItem="rgG-Am-Scy" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="L42-26-h97"/>
-                <constraint firstItem="nIu-Tc-sES" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="O7C-m2-Vsu"/>
+                <constraint firstItem="Dxg-eL-0NG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="OrR-nt-eoQ"/>
+                <constraint firstAttribute="trailing" secondItem="Dxg-eL-0NG" secondAttribute="trailing" id="QUH-oH-NFl"/>
                 <constraint firstItem="rgG-Am-Scy" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="UB1-xd-kAc"/>
+                <constraint firstAttribute="bottom" secondItem="Dxg-eL-0NG" secondAttribute="bottom" id="mI7-ll-YOx"/>
                 <constraint firstAttribute="trailing" secondItem="rgG-Am-Scy" secondAttribute="trailing" id="n54-Ee-sHI"/>
-                <constraint firstAttribute="bottom" secondItem="nIu-Tc-sES" secondAttribute="bottom" id="ngZ-I0-nW4"/>
-                <constraint firstItem="nIu-Tc-sES" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="p8z-nA-N9d"/>
-                <constraint firstAttribute="trailing" secondItem="nIu-Tc-sES" secondAttribute="trailing" id="w1B-8S-YAg"/>
             </constraints>
         </view>
     </objects>
